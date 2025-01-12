@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrição EGD 2025</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            transition: all 0.5s ease;
+        }
+        .container {
+            max-width: 600px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        img {
+            max-width: 100%;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: #aaa;
+            cursor: not-allowed;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body id="page1" style="background-image: url('https://i.imgur.com/FldhMhU.jpeg');">
+    <div class="container" id="content">
+        <!-- Página 1 -->
+        <img src="https://i.imgur.com/HG13DlT.jpeg" alt="Logo">
+        <p>Você está prestes a iniciar a sua inscrição para o EGD 2025. Clique em começar para criar a sua inscrição.</p>
+        <button onclick="goToPage(2)">Começar</button>
+    </div>
+
+    <script>
+        const content = document.getElementById('content');
+        let currentPage = 1;
+
+        function goToPage(page) {
+            currentPage = page;
+            if (page === 2) {
+                document.body.style.backgroundImage = "url('https://i.imgur.com/FldhMhU.jpeg')";
+                content.innerHTML = `
+                    <img src="https://i.imgur.com/HG13DlT.jpeg" alt="Logo">
+                    <h1>INSCRIÇÃO EGD 2025</h1>
+                    <form id="form" onsubmit="handleSubmit(event)">
+                        <label>Nome Completo:</label>
+                        <input type="text" name="nome" required>
+                        
+                        <label>Número de telefone:</label>
+                        <input type="text" name="telefone" required>
+                        
+                        <label>Contato de algum responsável:</label>
+                        <input type="text" name="responsavel" required>
+                        
+                        <label>E-mail:</label>
+                        <input type="email" name="email" required>
+                        
+                        <label>Idade:</label>
+                        <input type="number" name="idade" required>
+
+                        <label>Pertence a algum GA?</label>
+                        <select name="ga" required onchange="toggleField(this, 'gaDetail')">
+                            <option value="Não">Não</option>
+                            <option value="Sim">Sim</option>
+                        </select>
+                        <input type="text" id="gaDetail" name="ga_detail" placeholder="Se sim, qual?" class="hidden">
+
+                        <label>Toma algum remédio?</label>
+                        <select name="remedio" required onchange="toggleField(this, 'remedioDetail')">
+                            <option value="Não">Não</option>
+                            <option value="Sim">Sim</option>
+                        </select>
+                        <input type="text" id="remedioDetail" name="remedio_detail" placeholder="Se sim, qual?" class="hidden">
+
+                        <label>Possui algum tipo de doença?</label>
+                        <select name="doenca" required onchange="toggleField(this, 'doencaDetail')">
+                            <option value="Não">Não</option>
+                            <option value="Sim">Sim</option>
+                        </select>
+                        <input type="text" id="doencaDetail" name="doenca_detail" placeholder="Se sim, qual?" class="hidden">
+
+                        <label>Possui algum tipo de restrição alimentar?</label>
+                        <select name="restricao" required onchange="toggleField(this, 'restricaoDetail')">
+                            <option value="Não">Não</option>
+                            <option value="Sim">Sim</option>
+                        </select>
+                        <input type="text" id="restricaoDetail" name="restricao_detail" placeholder="Se sim, qual?" class="hidden">
+
+                        <p>Se você quiser, poderá alugar um colchonete durante os 4 dias do encontro no valor de 10 reais.</p>
+                        <label>
+                            <input type="checkbox" name="consentimento" required>
+                            Estou ciente de que preciso pagar o ingresso de R$ 250.
+                        </label>
+
+                        <button type="submit">Enviar Inscrição</button>
+                    </form>
+                `;
+            } else if (page === 3) {
+                const formData = new FormData(document.getElementById('form'));
+                const nome = formData.get('nome');
+                const pronome = nome.toLowerCase().endsWith('a') ? 'preparada' : 'preparado';
+                content.innerHTML = `
+                    <img src="https://i.imgur.com/HG13DlT.jpeg" alt="Logo">
+                    <h1>SUA INSCRIÇÃO FOI REALIZADA COM SUCESSO</h1>
+                    <p>${nome}, você agora está ${pronome} para viver o sobrenatural de Deus.</p>
+                    <button onclick="goToPage(2)">Voltar para inscrição</button>
+                `;
+            }
+        }
+
+        function toggleField(select, fieldId) {
+            document.getElementById(fieldId).classList.toggle('hidden', select.value === 'Não');
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault(); // Impede o envio padrão
+            goToPage(3); // Vai para a página 3
+        }
+    </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
