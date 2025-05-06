@@ -21,6 +21,8 @@
       height: 100vh;
       overflow-x: hidden;
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      transition: opacity 0.5s ease;
+      opacity: 0;
     }
     .page {
       display: none;
@@ -623,6 +625,33 @@ window.addEventListener('popstate', function (event) {
   goToPage(page, false);
 });
 
+  document.addEventListener("DOMContentLoaded", function () {
+    const videos = document.querySelectorAll("video");
+    let carregados = 0;
+
+    if (videos.length === 0) {
+      document.body.style.opacity = "1";
+      return;
+    }
+
+    videos.forEach(video => {
+      video.onloadeddata = () => {
+        carregados++;
+        if (carregados === videos.length) {
+          document.body.style.opacity = "1";
+        }
+      };
+    });
+
+    // Fallback: mostra o site mesmo que os vídeos demorem
+    setTimeout(() => {
+      document.body.style.opacity = "1";
+    }, 8000);
+  });
+
+  window.addEventListener("load", () => {
+    document.body.style.opacity = "0";
+  });
 
 </script>
 </body>
