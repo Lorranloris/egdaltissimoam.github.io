@@ -1,332 +1,628 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <title>Encontro Gerando Discípulos</title>
+  <title>INSCRIÇÃO EGD 2026</title>
+  <style>
+    /* Estilo Global */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family:Arial, Helvetica, sans-serif
+    }
+    body {
+      background-image: url('fundo\ site\ 2.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      overflow-x: hidden;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
+    .page {
+      display: none;
+      height: 100vh;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+    }
+    .active {
+      display: flex;
+    }
+    .glass-container {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 20px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+      overflow: auto;
+    }
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    .blur-box {
+      backdrop-filter: blur(15px);
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+      color: #ffffff;
+      overflow: auto;
+   }
 
-    <style>
+    img {
+      width: 100%;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      border: 3px solid #082d55;
+      box-shadow: 0 0 10px #082d55, 0 0 50px #082d55;
+    }
+    button, input, select, textarea, label {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+    }
+    button {
+      background: #082d55;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #007aff;
+    }
+    .hidden {
+      display: none;
+    }
+    footer {
+      margin-top: 20px;
+      color: white;
+      font-size: 0.8rem;
+    }
+    h2, h3 {
+      margin-top: 10px;
+    }
+.navegacao {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border-radius: 8px;
+  z-index: 9999;
+}
+.navegacao button {
+  margin: 5px;
+  padding: 8px 12px;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.navegacao button:hover {
+  background: #45a049;
+}
 
-        body {
+    .whatsapp-buttons {
+      display: flex;
+      gap: 0px;
+      flex-direction: column;
+    }
+    .whatsapp-buttons button {
+      background: #25D366;
+    }
+    button:hover {
+    background-color: #2980b9;
+  }
+    .highlight-box {
+        border: 1px solid #ffffff;
+        border-radius: 10px;
+        padding: 1px;
+        margin-top: 10px;
+        background-color:#00000059;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 16px;
+        transform: scale(1.0);
+    }
+    .highlight-box2 {
+        border-radius: 10px;
+        padding: 1px;
+        margin-top: 10px;
+        background-color:#00000059;
+        font-family: Verdrgba(0, 0, 0, 0.555)va, Tahoma, sans-serif;
+        font-size: 15px;
+    }
+    .video-container {
+  position: relative;
+  width: 100%;  /* Ou um valor fixo, como 80%, dependendo do seu layout */
+  padding-top: 56.25%; /* Isso cria uma proporção de 16:9 (9/16 = 0.5625 = 56.25%) */
+  background-color: rgba(0, 0, 0, 0);  /* Fica visível caso o vídeo não tenha fundo */
+}
+.video-container video {
+  transition: transform 0.3s ease;
+  border: 3px solid #0059ffda;
+  box-shadow: 0 0 10px #0059ffda, 0 0 50px #0059ffda;
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garantir que o vídeo ocupe o espaço todo sem distorcer */
+}
+.video-container:hover video {
+  transform: scale(1.05); /* ou 1.1 para mais zoom */
+}
+.video-containers {
 
-            margin: 0;
+  display: flex; /* Organiza os vídeos lado a lado */
+  justify-content: space-between; /* Espaço entre os vídeos */
+  gap: 20px; /* Espaço entre os vídeos */
+}
+.video-item {
 
-            font-family: 'Roboto', sans-serif;
+  border: 3px solid #0059ffda;
+  box-shadow: 0 0 10px #0059ffda, 0 0 50px #0059ffda;
+  border-radius: 20px;
+  position: relative;
+  width: 30%; /* Define a largura de cada vídeo como 30% */
+  padding-top: 30%; /* Isso faz com que a altura seja igual à largura, criando um quadrado */
+  background-color: rgba(0, 0, 0, 0); /* Fallback caso o vídeo não carregue */
+}
+.video-item video {
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Faz o vídeo preencher todo o quadrado sem distorcer */
+  transition: transform 0.3s ease; /* Suaviza o zoom */
+}
+.video-item:hover video {
+  transform: scale(1.05); /* Zoom de 5% ao passar o mouse */
+}
+.meu-link {
+  text-decoration: none; /* Tira o sublinhado */
+  color: #ffffff; /* Muda a cor do texto (azul, por exemplo) */
+  font-weight: bold; /* (opcional) Deixa o texto em negrito */
+}
 
-            color: #ffffff;
+/* Efeito hover (opcional e bonito!) */
+.meu-link:hover {
+  color: #ff0000; /* Muda de cor quando passar o mouse */
+}
 
-        }
+.consent-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start; /* alinha à esquerda do container */
+  padding-left: 20px; /* ajuste fino com base no seu print */
+}
 
-        .page {
+.consent-container {
+  display: inline-flex;
+  align-items: center;
+  font-size: 15px;
+  color: #cfe8f9;
+  gap: 6px;
+  flex-wrap: nowrap;       /* Impede quebra de linha */
+  max-width: 100%;
+  white-space: nowrap;     /* Impede quebra dentro do texto */
+  overflow-x: auto;        /* Permite rolar caso fique apertado */
+}
 
-            display: none;
+.consent-container input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: white;
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin: 0; /* remove margens automáticas que causam desalinhamento */
+  padding: 0;
+}
 
-            width: 100vw;
-
-            height: 100vh;
-
-            background-size: cover;
-
-            background-position: center;
-
-            overflow-y: auto;
-
-        }
-
-        .page.active {
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-
-            justify-content: center;
-
-            animation: fadeIn 0.5s ease;
-
-        }
-
-        @keyframes fadeIn {
-
-            from { opacity: 0; }
-
-            to { opacity: 1; }
-
-        }
-
-        .container {
-
-            background: rgba(0, 0, 0, 0.6);
-
-            padding: 20px;
-
-            border-radius: 10px;
-
-            text-align: center;
-
-            max-width: 600px;
-
-            width: 90%;
-
-        }
-
-        .container img {
-
-            max-width: 100%;
-
-            height: auto;
-
-        }
-
-        .form {
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 15px;
-
-            text-align: left;
-
-        }
-
-        .form label {
-
-            font-weight: bold;
-
-        }
-
-        .form input, .form select, .form textarea {
-
-            width: 100%;
-
+.consent-container a {
+  color: #cfe8f9;
+  text-decoration: underline;
+}
+footer {
+position: fixed;
+bottom: 0;
+width: 100%;
+background: rgba(0, 0, 0, 0.8);
+color: #fff;
+text-align: center;
+padding: 10px;
+}
+.form-warning {
+            margin-top: 20px;
+            font-size: 14px;
+            background: rgba(255, 0, 0, 0.411);
             padding: 10px;
-
-            border: none;
-
             border-radius: 5px;
+}
+.imgpix{
+  width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+a img:hover {
+  opacity: 0.8;
+  transform: scale(1.07);
+  transition: 0.3s ease;
+}
+a img {
+  border: 4px solid transparent;
+  transition: 0.3s ease;
+}
 
-        }
+a img:hover {
+  border-color: #0ff; /* Ciano neon */
+  box-shadow: 0 0 10px rgb(255, 0, 0), 0 0 20px #0ff, 0 0 30px #0ff;
+}
+.perguntas{
+  overflow-x: auto;
+  flex-wrap: nowrap;       /* Impede quebra de linha */
+  max-width: 100%;
+  break-inside: auto;
+}
+.audio {
+  display: inline-flex;
+  align-items: center;
+  padding: 0; /* ou algum valor pequeno se quiser espaço interno */
+  border: 3px solid #ff0015;
+  box-shadow: 0 0 10px #ff0015, 0 0 50px #ff0015;
+  border-radius: 50px;
+}
 
-        .button {
+.highlight-box3{
+  background-color: rgba(0, 0, 0, 0.329);
+  border-radius: 20px;
+}
 
-            margin-top: 20px;
+footer {
+  backdrop-filter: blur(15px);
+      background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  z-index: 9999; /* para aparecer acima das páginas */
+}
 
-            padding: 10px 20px;
+.navegacao-1 {
+  width: 100%;
+}
 
-            background: #00aaff;
+.highlight-box5 {
+        border-radius: 10px;
+        padding: 1px;
+        margin-top: 10px;
+        background-color:#00000059;
+        font-family: Verdrgba(0, 0, 0, 0.555)va, Tahoma, sans-serif;
+        font-size: 15px;
+    }
+    .highlight-box6 {
+        border-radius: 10px;
+        padding: 1px;
+        margin-top: 10px;
+        background-color:#00000096;
+        font-family: Verdrgba(0, 0, 0, 0.555)va, Tahoma, sans-serif;
+        font-size: 15px;
+    }
 
-            border: none;
+    .botao-grande {
+  font-size: 25px;
+  padding: 20px 30px;
+}
 
-            border-radius: 5px;
 
-            color: #fff;
 
-            font-weight: bold;
-
-            cursor: pointer;
-
-        }
-
-        .button:hover {
-
-            background: #008ecc;
-
-        }
-
-        footer {
-
-            margin-top: 20px;
-
-            text-align: center;
-
-        }
-
-        footer img {
-
-            max-width: 200px;
-
-        }
-
-        footer button {
-
-            margin-top: 10px;
-
-            width: 90%;
-
-        }
-
-    </style>
-
-    <!-- Biblioteca EmailJS -->
-
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
-    <script>
-
-        // Inicializar o EmailJS
-
-        (function() {
-
-            emailjs.init("5zsaGp6Q_O6K2ZNsu"); // Substitua com sua Public Key
-
-        })();
-
-        function showPage(pageId) {
-
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-
-            document.getElementById(pageId).classList.add('active');
-
-        }
-
-        async function handleSubmit(event) {
-
-            event.preventDefault();
-
-            const form = document.getElementById('registrationForm');
-
-            const formData = new FormData(form);
-
-            const name = formData.get('user_name'); // Corrigido para pegar o nome correto
-
-            try {
-
-                // Envio via EmailJS
-
-                await emailjs.sendForm("service_pq5zsjl", "template_njysgbl", form);
-
-                document.getElementById('successMessage').textContent = `${name}, agora você está preparado(a) para viver o sobrenatural de Deus.`;
-
-                showPage('page3');
-
-            } catch (error) {
-
-                alert('Ocorreu um erro ao enviar sua inscrição. Tente novamente mais tarde.');
-
-                console.error('Erro:', error);
-
-            }
-
-        }
-
-    </script>
-
+    @media (min-width: 768px) {
+      .glass-container {
+        max-width: 600px;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <footer>© 2025 por Igreja do Altíssimo Am. Todos os direitos reservados.</footer>
 
-    <!-- Página 1 -->
+<!-- Página 1 -->
+<div class="page active" id="page1">
+  <div class="glass-container">
+    <img src="site tpo.png" alt="Imagem EGD">
+    <p><H1>SEJA BEM-VINDO AO SITE DE INSCRIÇÃO EGD 2026.</H1> <br> <h2>INSCREVA-SE CLICANDO NO BOTÃO ABAIXO:</h2></p>
+    <button class="botao-grande" onclick="goToPage(2)">ACESSAR ÁREA DE INSCRIÇÃO</button> <br>
+  </div>
+</div>
 
-    <div id="page1" class="page active" style="background-image: url('https://i.imgur.com/uNM24AF.png');">
-
-        <div class="container">
-
-            <img src="https://i.imgur.com/rpCBl2W.png" alt="Logo EGD">
-
-            <p>Você está prestes a iniciar a sua inscrição para o EGD 2025. Clique em "Começar" para criar a sua inscrição.</p>
-
-            <button class="button" onclick="showPage('page2')">Começar</button>
-
+<!-- Página 2 -->
+<div class="page" id="page2">
+  <form id="inscricaoForm" class="glass-container">
+    <img src="site tpo.png" alt="Imagem Inscrição">
+    <h1>INSCRIÇÃO EGD 2026</h1>
+    <h5>INSCRIÇÃO ENCONTRO IGREJA DO ALTÍSSIMO</h5>
+    <br>
+    <hr>
+    <br>
+    <div class="highlight-box2">
+        <h2>NÃO FOI PARA O EGD 2025?</h2>
+     <h5>OLHA SÓ O QUE VOCÊ PERDEU NO ENCONTRO PASSADO 👇</h5>
+     <br>
+    </div> <br>
+    <div class="video-container">
+      <video autoplay muted playsinline loop controls preload="auto">
+        <source src="SnapInsta.mp4" type="video/mp4">
+        Seu navegador não suporta vídeos.
+      </video>
+      
+      </div>
+      <br>
+      <div class="video-containers">
+        <div class="video-item">
+          <video controls autoplay muted loop playsinline preload="auto">
+            <source src="EGD3.mp4" type="video/mp4">
+            Seu navegador não suporta a tag de vídeo.
+          </video>
         </div>
-
+        <div class="video-item">
+          <video controls autoplay  muted loop preload="auto">
+            <source src="EGD.mp4" type="video/mp4">
+            Seu navegador não suporta a tag de vídeo.
+          </video>
+        </div>
+        <div class="video-item">
+          <video controls autoplay muted loop preload="auto">
+            <source src="EGD2.mp4" type="video/mp4">
+            Seu navegador não suporta a tag de vídeo.
+          </video>
+        </div>
+       </div>
+       <br>
+       <div class="video-container">
+        <video autoplay muted playsinline loop controls preload="auto">
+          <source src="WhatsApp Video 2025-03-09 at 12.02.22.mp4" type="video/mp4">
+          Seu navegador não suporta vídeos.
+        </video>
+        
+        </div>
+      <br>
+      <div class="highlight-box6">
+        <br>
+      <h2>E AÍ, VOCÊ FOI? </h2> <h4>FOI INCRÍVEL, NÉ?</h4>
+      <br>
+      </div>
+      <br>
+      <br>
+      <hr>
+      <BR></BR>
+    <div class="highlight-box5">
+      <br>
+    <h2>E AÍ, TOPA FAZER PARTE TAMBÉM?</h2> <h4>COMECE AGORA MESMO A SUA INSCRIÇÃO</h4>
+    <br>
+    </div>
+      <input type="text" id="nome" placeholder="Nome Completo" required>
+      <input type="tel" id="telefone" placeholder="Número de Telefone" required>
+      <input type="email" id="email" placeholder="E-mail" required>
+      <input type="number" id="idade" placeholder="Sua Idade" required>
+      <input type="text" id="responsavel" placeholder="Nome e Número de um Responsável" required>
+      <input type="text" id="congregacao" placeholder="Faz Parte de Alguma Congregação?" required>
+      <input type="text" id="ga" placeholder="Faz Parte de Algum GA?" required>
+      <input type="text" id="medicamentos" placeholder="Faz Uso de Medicamentos?" required>
+      <textarea id="restricoes" placeholder="Tem Alguma Restrição Alimentar, Necessidades Especiais ou Alguma Limitação Física?" required rows="2" style="width: 100%; resize: vertical;"></textarea>
+      <input type="text" id="egdAntes" placeholder="Já Participou de Algum EGD?" required>
+    
+    <select id="transporte" required>
+      <option value="">Selecione seu meio de transporte</option>
+      <option value="Ônibus EGD">Ônibus EGD</option>
+      <option value="Transporte Individual">Transporte Individual</option>
+      <option value="Ida Individual / Volta Ônibus">Farei de forma individual, mas voltarei no ônibus</option>
+    </select>
+    
+    <div class="highlight-box">
+        <p><br>
+          O Local Disponibiliza o uso de colchonete no valor de R$10 durante os quatro dias do encontro. Fale com os responsáveis após a primeira palestra. <br>
+          <br><p>
+    </div>
+<br>
+<div class="consent-wrapper">
+  <label class="consent-container">
+    <input type="checkbox" id="consent" required>
+    Estou ciente de que preciso <a href="https://w.app/hc9ldx" target="_blank">pagar o ingresso de R$270</a>
+  </label>
+</div>
+    <br>
+    <div class="highlight-box">
+    <p> <br>Ao enviar a inscrição você está ciente de que precisa pagar o ingresso de R$270 - Seus dados não seram usados para outros para outros fins. <br>
+      <br></p>
     </div>
 
-    <!-- Página 2 -->
-
-    <div id="page2" class="page" style="background-image: url('https://i.imgur.com/D2l37iT.jpeg');">
-
-        <div class="container" style="max-height: 90vh; overflow-y: auto;">
-
-            <img src="https://i.imgur.com/rpCBl2W.png" alt="Logo EGD">
-
-            <h1>INSCRIÇÃO EGD 2025</h1>
-
-            <form id="registrationForm" class="form" onsubmit="handleSubmit(event)">
-
-                <label>Nome Completo: <input type="text" name="user_name" required></label>
-
-                <label>Número de Telefone: <input type="tel" name="telefone" required></label>
-
-                <label>E-mail: <input type="email" name="user_email" required></label>
-
-                <label>Sua Idade (Menores de idade precisrão de autorização dos pais e/ou guardiões): <input type="number" name="idade" required></label>
-
-                <label>Nome e Número de Telefone de um Responsável: <input type="text" name="responsavel" required></label>
-
-                <label>Você Faz Parte de Alguma Congregação? Se sim, qual? <textarea name="congregacao" required></textarea></label>
-
-                <label>Você Faz Parte de Algum GA? <textarea name="ga" required></textarea></label>
-
-                <label>Faz Uso de Medicamento de Uso Contínuo? Se sim, qual? <textarea name="medicamento" required></textarea></label>
-
-                <label>Tem Alguma Restrição Alimentar, Necessidades Especiais ou Alguma Limitação Física? Se sim, qual? <textarea name="restricoes" required></textarea></label>
-
-                <label>Já Participou de Algum EGD Antes? Sim, Não ou Alguns? <input type="text" name="experiencia" required></label>
-
-                <label>Selecione seu meio de transporte ao EGD:
-
-                    <select name="transporte" required>
-
-                        <option>Ônibus do EGD</option>
-
-                        <option>Transporte Individual</option>
-
-                        <option>Farei de forma individual, mas voltarei no ônibus</option>
-
-                    </select>
-
-                </label>
-
-                <p>O local disponibiliza colchonetes para aluguel no valor de R$10,00. Fale com os responsáveis pelo local, após a primeira palestra.</p>
-
-                <label><input type="checkbox" id="consent" required> Estou ciente de que preciso pagar o ingresso de R$ 250.</label>
-
-                <button type="submit" class="button">Enviar Inscrição</button>
-
-            </form>
-
-            <footer>
-
-                <img src="https://i.imgur.com/Z6jkKTX.png" alt="Footer Logo">
-
-                <button class="button" onclick="window.open('https://wa.me/559282358893', '_blank')">Enviar comprovante para Talita</button>
-
-                <button class="button" onclick="window.open('https://wa.me/559296127170', '_blank')">Enviar comprovante para Priscila</button>
-
-            </footer>
-
-        </div>
-
+    <button type="submit">ENVIAR MINHA INSCRIÇÃO</button>
+    <button onclick="goToPage(4)">ACESSAR ÁREA DE PAGAMENTO</button>
+ </form>
     </div>
+</div>
 
-    <!-- Página 3 -->
 
-    <div id="page3" class="page" style="background-image: url('https://i.imgur.com/uNM24AF.png');">
+<!-- Página 4 -->
+<div class="page" id="page4">
+  <div class="blur-box">
+       <div class="highlight-box2"> <br>
+         <h1>ÁREA DE PAGAMENTO</h1>
+        <h5>REALIZE AQUI O PAGAMENTO DO SEU INGRESSO</h5> <br>
+       </div>
+          <div class="form-warning">
+            AVISO: O pagamento só pode ser feito via PIX, visando à segurança da transferência.
+            Recomenda-se conferir o destinatário da transferência antes de concluir o pagamento.
+          </div>
+  <br>
+             <div class="imgpix">
+               <a href="https://www.exemplo.com" target="_blank">
+               <img src="pix site.png" alt="Descrição da imagem" class="imagem">
+               </a>
+             </div>
+            <div class="highlight-box"><br>
+              <p><b>PIX: tesouraria.ipeaam@gmail.com</b></p><br>
+            </div>
+          <div class="whatsapp-buttons">
+            <button onclick="sendWhatsApp('Talita')">Enviar Comprovante para Talita</button>
+            <button onclick="sendWhatsApp('Priscila')">Enviar Comprovante para Priscila</button>
+          </div>
+          <button onclick="goToPage(2)"> CONTINUAR INSCRIÇÃO / <br> VOLTAR PARA PÁGINA DE INSCRIÇÃO</button>
+  </div>
+   </div>
 
-        <div class="container">
-
-            <img src="https://i.imgur.com/rpCBl2W.png" alt="Logo EGD">
-
-            <h1>SUA INSCRIÇÃO FOI REALIZADA COM SUCESSO</h1>
-
-            <p id="successMessage"></p> <!-- Exibe a mensagem com o nome -->
-
-            <p>Agora tire um print e marque a gente nas redes sociais: @igrejadoaltissimo.am</p>
-
-            <button class="button" onclick="showPage('page2')">Voltar para Inscrição.</button>
-
-            <button class="button" onclick="showPage('page1')">Voltar para o início</button>
-
-        </div>
-
+<!-- Página 5 -->
+<div class="page" id="page5">
+  <div class="glass-container">
+    <div class="navegacao-1">
+      <button onclick="goToPage(1)">Página 1</button>
+      <button onclick="goToPage(2)">Página 2</button>
+      <button onclick="goToPage(3)">Página 3</button>
+      <button onclick="goToPage(4)">Página 4</button>
     </div>
+    
+  </div>
+</div>
 
+
+<!-- Página 3 -->
+<div class="page" id="page3">
+  <div class="glass-container">
+    <img src="site tpo.png" alt="Imagem Final">
+    <h1 id="mensagemFinal">SUA INSCRIÇÃO FOI REALIZADA COM SUCESSO</h1> <br>
+    <hr>
+    <br>
+    <h2 id="textoAgradecimento"></h2>
+    <br>
+    <div class="highlight-box2"> <br>
+      <h2>AGORA TIRE UM PRINT E MARQUE <br> A GENTE NAS REDES SOCIAIS:</h2>
+        <br>
+          <a href="https://www.instagram.com/igrejadoaltissimo.am?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="meu-link">
+              @igrejadoaltissimo.am
+            </a>
+          <a href="https://www.instagram.com/jovensconvictos.am?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="meu-link">
+          @jovensconvctos.am
+        </a> <br> <br>
+    </div>
+    <br>
+    <br>
+    <button onclick="goToPage(1)"> VOLTAR PARA PÁGINA INICIAL</button>
+    <button onclick="goToPage(2)"> REALIZAR NOVA INSCRIÇÃO</button>
+    <br>
+    <br>
+    <div class="highlight-box3">
+      <br> <p>Recadinho do <a href="https://www.instagram.com/pr.danielnunessena?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="meu-link"> Nosso Pastor Daniel</a> especialmente para você...</p>
+       <br>
+    <div class="audio">
+      <audio src="ssstik.io_1745979241064.mp3" controls muted preload="metadata"></audio>
+    </div>
+    <br>
+    <br>
+  </div>
+</div>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  emailjs.init('bAdFx_yZma_XuIwtl');
+
+  function goToPage(pageNumber, push = true) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page' + pageNumber).classList.add('active');
+
+  if (push) {
+    history.pushState({ page: pageNumber }, '', '#page' + pageNumber);
+  }
+}
+
+
+  document.getElementById('inscricaoForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+
+    if(!document.getElementById('consent').checked) {
+      alert('Você precisa aceitar o termo de consentimento.');
+      return;
+    }
+
+    const formData = {
+      nome: document.getElementById('nome').value,
+      telefone: document.getElementById('telefone').value,
+      email: document.getElementById('email').value,
+      idade: document.getElementById('idade').value,
+      responsavel: document.getElementById('responsavel').value,
+      congregacao: document.getElementById('congregacao').value,
+      ga: document.getElementById('ga').value,
+      medicamentos: document.getElementById('medicamentos').value,
+      restricoes: document.getElementById('restricoes').value,
+      egdAntes: document.getElementById('egdAntes').value,
+      transporte: document.getElementById('transporte').value
+    };
+
+    emailjs.send('service_1vpmg3i', 'template_vf13zpf', formData)
+      .then(() => {
+        personalizeMessage(formData.nome);
+        goToPage(3);
+      }, (error) => {
+        alert('Erro ao enviar inscrição. Tente novamente.');
+        console.log(error);
+      });
+  });
+
+  function personalizeMessage(fullName) {
+    const firstName = fullName.split(' ')[0];
+    const genderSuffix = (firstName.endsWith('a') || firstName.endsWith('e')) ? 'preparada' : 'preparado';
+    document.getElementById('textoAgradecimento').innerHTML = `Aeee ${firstName}! Agora você está ${genderSuffix} para viver o sobrenatural de Deus.`;
+  }
+
+  function sendWhatsApp(person) {
+    const phoneTalita = '+559282358893';
+    const phonePriscila = '+559296127170';
+    const phone = person === 'Talita' ? phoneTalita : phonePriscila;
+    window.open(`https://wa.me/${phone}`, '_blank');
+  }
+  function irParaPagina(pagina) {
+  window.location.href = 'pagina' + pagina + '.html';
+}
+
+// Ao carregar a página, verifica se tem hash (ex: #page2)
+window.addEventListener('load', () => {
+  const hash = window.location.hash.replace('#page', '');
+  const page = hash || '1';
+  goToPage(page, false);
+  history.replaceState({ page }, '', '#page' + page);
+});
+
+// Quando o usuário clicar na seta de voltar/avançar
+window.addEventListener('popstate', function (event) {
+  const page = (event.state && event.state.page) || '1';
+  goToPage(page, false);
+});
+
+
+</script>
 </body>
-
 </html>
+
